@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:collection/collection.dart';
 import 'package:flutter/services.dart';
 import 'src/clock.dart';
@@ -104,11 +102,10 @@ class FacebookLogin {
   Future<FacebookLoginResult> logIn(
     List<String> permissions,
   ) async {
-    final Map<dynamic, dynamic> result =
-        await (channel.invokeMethod('logIn', {
+    final Map<dynamic, dynamic> result = await (channel.invokeMethod('logIn', {
       'behavior': _currentLoginBehaviorAsString(),
       'permissions': permissions,
-    }) as FutureOr<Map<dynamic, dynamic>>);
+    }));
 
     return _deliverResult(
         FacebookLoginResult._(result.cast<String, dynamic>()));
