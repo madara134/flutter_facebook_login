@@ -16,12 +16,11 @@ class _MyAppState extends State<MyApp> {
   String _message = 'Log in/out by pressing the buttons below.';
 
   Future<Null> _login() async {
-    final FacebookLoginResult result =
-        await facebookSignIn.logIn(['email']);
+    final FacebookLoginResult result = await facebookSignIn.logIn(['email']);
 
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
-        final FacebookAccessToken accessToken = result.accessToken;
+        final FacebookAccessToken accessToken = result.accessToken!;
         _showMessage('''
          Logged in!
          
